@@ -1,22 +1,122 @@
 <html>
+
 <head>
-<title>Your Website Title</title>
-<!-- You can use Open Graph tags to customize link previews.
+  <title>Your Website Title</title>
+  <!-- You can use Open Graph tags to customize link previews.
 Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-<meta property="og:url"           content="https://thumbs.dreamstime.com/b/taiwan-milk-tea-bubble-wood-background-152639998.jpg" />
-<meta property="og:type"          content="website" />
-<meta property="og:title"         content="Your Website Title" />
-<meta property="og:description"   content="Your description" />
-<meta property="og:image"         content="https://thumbs.dreamstime.com/b/taiwan-milk-tea-bubble-wood-background-152639998.jpg" />
+  <meta property="og:url"
+    content="https://thumbs.dreamstime.com/b/taiwan-milk-tea-bubble-wood-background-152639998.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Your Website Title" />
+  <meta property="og:description" content="Your description" />
+  <meta property="og:image"
+    content="https://thumbs.dreamstime.com/b/taiwan-milk-tea-bubble-wood-background-152639998.jpg" />
 </head>
+
 <body>
 
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=2081611205416942&autoLogAppEvents=1" nonce="iHkWrzQK"></script>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=2081611205416942&autoLogAppEvents=1"
+    nonce="iHkWrzQK"></script>
 
-<!-- Your share button code -->
-<div class="fb-share-button" data-href="https://tratanhieu.github.io/static-page/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftratanhieu.github.io%2Fstatic-page%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+  <!-- Your share button code -->
+  <div class="fb-share-button" data-href="https://tratanhieu.github.io/static-page/" data-layout="button_count"
+    data-size="small"><a target="_blank"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftratanhieu.github.io%2Fstatic-page%2F&amp;src=sdkpreparse"
+      class="fb-xfbml-parse-ignore">Share</a></div>
+  <div><button onclick="postToFb();">Post</button></div>
 
+  <fb:login-button scope="public_profile,email,publish_to_groups" onlogin="checkLoginState();">
+  </fb:login-button>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '721592179104876',
+        cookie: true,
+        xfbml: true,
+        version: 'v14.0'
+      });
+
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function checkLoginState() {
+      FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+      });
+    }
+
+    function postToFb() {
+      // var body = 'Reading JS SDK documentation';
+      // FB.api('/me/feed', 'post', { message: body }, function (response) {
+      //   if (!response || response.error) {
+      //     alert('Error occured');
+      //   } else {
+      //     alert('Post ID: ' + response.id);
+      //   }
+      // });
+      FB.api('/me', { fields: 'last_name' }, function (response) {
+        console.log(response);
+      });
+    }
+
+    function statusChangeCallback(response) {
+      console.log(response)
+    }
+  </script>
+  <!-- 
+  <script>
+    function init() {
+      // FB.api(
+      //   '/l214.animaux',
+      //   {"fields":"fan_count"},
+      //   function(response) {
+      //     alert(response.fan_count);
+      //   }
+      // );
+      postToFb();
+    }
+
+    function postToFb() {
+      var body = 'Reading JS SDK documentation';
+      FB.api('/me/feed', 'post', { message: body }, function (response) {
+        if (!response || response.error) {
+          alert('Error occured');
+        } else {
+          alert('Post ID: ' + response.id);
+        }
+      });
+    }
+
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '2081611205416942',
+        xfbml: true,
+        version: 'v14.0'
+      });
+
+      init();
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script> -->
 </body>
+
 </html>
