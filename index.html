@@ -28,7 +28,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
       class="fb-xfbml-parse-ignore">Share</a></div>
   <div><button onclick="postToFb();">Post</button></div>
 
-  <fb:login-button scope="public_profile,email,publish_to_groups" onlogin="checkLoginState();">
+  <fb:login-button scope="public_profile,email,publish_to_groups,publish_pages" onlogin="checkLoginState();">
   </fb:login-button>
   <script>
     window.fbAsyncInit = function () {
